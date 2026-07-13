@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vejlederdel</title><link rel="stylesheet" href="style-v3.css?v=3">
+</head>
+<body>
+<div class="brandbar"><img src="logo.svg" alt="Steinbeck – AI- og læringsdesign"></div>
+<header><h1>Vejlederregistrering</h1><p>Mandag · Første observation efter introduktion og modellering</p><p style="margin:.35rem 0 0;font-size:.8rem"><span class="version-badge">Version 1.0 · første udgave</span></p></header>
+<main>
+  <section id="lockScreen" class="card lock">
+    <h2>Vejlederadgang</h2>
+    <p>Indtast vejlederkoden. Første gang opretter du selv koden.</p>
+    <label for="pin">Kode</label>
+    <input id="pin" type="password" inputmode="numeric" minlength="4" autocomplete="current-password">
+    <div class="actions">
+      <button class="primary" onclick="unlock()">Åbn vejlederdelen</button>
+    </div>
+    <p id="lockMessage" class="small"></p>
+  </section>
+
+  <section id="advisorApp" class="hidden">
+
+<div class="legal-box">
+  <h2>Brug og databeskyttelse</h2>
+  <p>Appen er et internt observations- og vejledningsredskab. Den er ikke en prøve og må ikke alene bruges til at afgøre, om eleven har bestået eller ikke bestået.</p>
+  <ul>
+    <li>Brug kun appen efter institutionens godkendelse og efter institutionens egne regler for behandling af personoplysninger.</li>
+    <li>Skriv aldrig fulde navne, CPR-numre, helbredsoplysninger eller andre unødvendige personoplysninger.</li>
+    <li>Brug kun barnets forbogstav og registrér kun det, der er nødvendigt for det konkrete vejledningsformål.</li>
+    <li>Vejlederdelen skal låses efter brug. Data skal slettes, når de ikke længere er nødvendige.</li>
+    <li>Oplysninger gemmes lokalt på den enhed og i den browser, hvor appen anvendes. Institutionen er ansvarlig for, at enheden er beskyttet og ikke deles med uvedkommende.</li>
+  </ul>
+  <p class="small">Appen erstatter ikke institutionens egne sikre fagsystemer, journaliseringskrav eller lokale databeskyttelsesprocedurer.</p>
+</div>
+
+    <div class="topline no-print">
+      <a class="button secondary" href="index.html">Til forsiden</a>
+      <div class="actions">
+        <button class="neutral" onclick="lockNow()">Lås vejlederdelen</button>
+        <button class="danger" onclick="resetAdvisor()">Slet vejlederdata</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Situation</h2>
+      <label for="place">Sted</label>
+      <select id="place"><option value="">Vælg sted</option><option>Stue</option><option>Garderobe</option><option>Legeplads</option><option>Måltid</option><option>Andet</option></select>
+      <label for="initial">Barnets forbogstav</label>
+      <input id="initial" maxlength="2" autocomplete="off" placeholder="Fx A">
+      <p class="small">Skriv højst to bogstaver. Brug ikke barnets fulde navn.</p>
+      <div id="observations"></div>
+      <label for="promptText">Hvad sagde vejlederen ved påmindelse eller instruktion?</label>
+      <textarea id="promptText"></textarea>
+      <label for="tellSummary">Kort referat af Fortæl-samtalen</label>
+      <textarea id="tellSummary"></textarea>
+      <div class="actions no-print">
+        <button class="primary" onclick="saveAdvisor()">Gem krypteret</button>
+        <button class="secondary" onclick="renderSummary()">Vis status</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Status</h2>
+      <div class="notice">Status sammenholder elevens handlinger med den givne støtte. Efter sommerferien kan observationerne kobles til skolens lokale forventninger til anden oplæringsperiode.</div>
+      <div id="summary" class="summary">Der er endnu ikke gemt en registrering.</div>
+      <div class="actions no-print"><button class="primary" onclick="window.print()">Udskriv / gem som PDF</button></div>
+      <p class="small">Der beregnes ingen score, procent, samlet vurdering eller konklusion.</p>
+    </div>
+  </section>
+
+<footer class="footer">
+  <strong>PAU-forløb · Version 1.0</strong><br>
+  Udviklet af Steinbeck med AI-understøttelse. Indhold og funktion er fagligt gennemgået af et menneske.<br>
+  Første udgave · juli 2026
+</footer>
+
+</main>
+<script src="vejleder-v3.js?v=3"></script>
+</body></html>
