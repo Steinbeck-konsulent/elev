@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vejlederdel</title><link rel="stylesheet" href="style-v12.css?v=12"></head>
+<body><div class="brandbar"><span class="brandname">STEINBECK</span><span class="brandsub">AI- og læringsdesign</span></div><header><h1>Vejlederregistrering</h1><p><span class="version-badge">Version 1.2 · første udgave</span></p></header>
+<main>
+<section id="lockScreen" class="card lock"><h2>Vejlederadgang</h2><p>Indtast vejlederkoden. Første gang opretter du selv koden.</p>
+<label for="pin">Kode</label><input id="pin" type="password" inputmode="numeric" minlength="4" autocomplete="current-password">
+<div class="actions"><button class="primary" onclick="unlock()">Åbn vejlederdelen</button></div><p id="lockMessage" class="small"></p></section>
+<section id="advisorApp" class="hidden">
+<div class="legal-box"><h2>Brug og databeskyttelse</h2><p>Registrér kun synlige handlinger og nødvendige oplysninger. Brug anonymt elev-id og barnets forbogstav.</p>
+<p>Status beskriver, hvad eleven gjorde under de givne betingelser. Den forklarer ikke hvorfor.</p></div>
+<div class="topline no-print"><a class="button secondary" href="index.html">Til forsiden</a><div class="actions"><button class="neutral" onclick="lockNow()">Lås vejlederdelen</button><button class="danger" onclick="resetAdvisor()">Slet vejlederdata</button></div></div>
+<div class="card"><h2>Ny registrering</h2>
+<label for="day">Dag</label><select id="day" onchange="toggleTransfer()"><option>Mandag</option><option>Tirsdag</option><option>Onsdag</option><option>Torsdag</option><option>Fredag</option></select>
+<label for="studentId">Elev-id</label><input id="studentId" maxlength="12" autocomplete="off" placeholder="Fx PAU-01"><p class="small">Brug et internt, anonymt elev-id – ikke navn eller CPR-nummer.</p>
+<label for="place">Sted</label><select id="place"><option value="">Vælg sted</option><option>Stue</option><option>Garderobe</option><option>Legeplads</option><option>Måltid</option><option>Andet</option></select>
+<label for="initial">Barnets forbogstav</label><input id="initial" maxlength="2" autocomplete="off" placeholder="Fx A"><p class="small">Skriv højst to bogstaver.</p>
+<div id="observations"></div>
+<div class="notice">»Vejleder greb ind af hensyn til barnet« beskriver situationen og tæller ikke imod eleven. Barnets trivsel går altid forud for observationen.</div>
+<label for="promptText">Hvad sagde vejlederen ved påmindelse eller instruktion?</label><textarea id="promptText"></textarea>
+<label for="tellSummary">Kort referat af Fortæl-samtalen</label><textarea id="tellSummary"></textarea>
+<div id="transferSection" class="transfer-box inactive"><h3>Overførsel til en ny situation</h3>
+<p>Udfyld kun dette felt, når du konkret har set eleven bruge noget fra en tidligere situation i en ny type situation.</p>
+<p class="small"><strong>Et tomt felt betyder »ikke observeret« – ikke »ikke kunnet«.</strong></p>
+<label for="transferDate">Dato</label><input id="transferDate" type="date">
+<label for="transferSituation">Kort beskrivelse af den nye situation</label><textarea id="transferSituation"></textarea>
+<label for="transferAction">Hvad gjorde eleven konkret?</label><textarea id="transferAction"></textarea>
+<label for="transferSupport">Støtteniveau</label><select id="transferSupport"><option value="">Ikke udfyldt</option><option>Selvstændigt</option><option>Efter kort påmindelse</option><option>Efter konkret instruktion</option><option>Ikke udført</option><option>Vejleder greb ind af hensyn til barnet</option></select></div>
+<div class="actions no-print"><button class="primary" onclick="saveAdvisor()">Gem krypteret</button><button class="secondary" onclick="showLatestStatus()">Vis status</button></div></div>
+<div class="card"><h2>Status</h2>
+<div class="notice">Status sammenholder elevens handlinger med den givne støtte. Efter sommerferien kan observationerne kobles til skolens lokale forventninger til anden oplæringsperiode.</div>
+<div class="notice">Data beskriver, hvad eleven gjorde under de givne betingelser. De forklarer ikke hvorfor.</div>
+<div id="summary" class="summary">Der er endnu ikke gemt en registrering.</div>
+<div class="actions no-print"><button class="primary" onclick="window.print()">Udskriv / gem som PDF</button></div>
+<p class="small">Der beregnes ingen score, procent, samlet vurdering eller konklusion.</p></div>
+<div class="card"><h2>Registreringer</h2><h3>Version 1.2</h3><div id="history" class="summary">Ingen registreringer.</div>
+<div class="actions no-print"><button class="secondary" onclick="renderComparison()">Sammenlign version 1.2-registreringer</button></div>
+<div id="comparison" class="summary">Sammenligning vises her.</div>
+<h3>Ældre registreringer</h3><div id="legacyHistory" class="summary">Ingen ældre registreringer.</div>
+<p class="small">Ældre registreringer bevares og kan læses separat. De indgår ikke i direkte sammenligning med version 1.2.</p></div>
+</section><footer class="footer"><strong>PAU-forløb · Version 1.2</strong><br>Første udgave · juli 2026 · Udviklet med AI-understøttelse og fagligt gennemgået.</footer></main><script src="vejleder-v12.js?v=12"></script></body></html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elevdel</title><link rel="stylesheet" href="style-v3.css?v=3">
+</head>
+<body>
+<div class="brandbar"><span class="brandname">STEINBECK</span><span class="brandsub">AI- og læringsdesign</span></div>
+<header><h1>Se – gå hen – hjælp – fortæl</h1><p>Elevdel</p><p style="margin:.35rem 0 0;font-size:.8rem"><span class="version-badge">Version 1.2 · første udgave</span></p></header>
+<main>
+<section id="elevLock" class="card lock">
+  <h2>Elevadgang</h2>
+  <p>Indtast dagens elevkode.</p>
+  <label for="elevCode">Kode</label>
+  <input id="elevCode" type="password" inputmode="numeric" autocomplete="off">
+  <div class="actions"><button class="primary" onclick="unlockElev()">Åbn elevdelen</button></div>
+  <p id="elevLockMessage" class="small"></p>
+</section>
+<section id="elevApp" class="hidden">
+  <div class="legal-box"><p><strong>Privatliv:</strong> Skriv ikke navne eller andre oplysninger om børn i elevdelen. Elevdelen gemmer kun midlertidige knaptryk i den aktuelle browserfane.</p></div>
+<div class="topline no-print">
+    <a class="button secondary" href="index.html">Til forsiden</a>
+    <button class="danger" onclick="resetElev()">Nulstil elevdelen</button>
+  </div>
+
+  <div class="card screen" id="screen-1">
+    <h2>Godmorgen.</h2><p class="lead">Nu starter din dag.</p>
+    <div class="actions"><button class="primary" onclick="nextScreen(2)">Start</button></div>
+  </div>
+
+  <div class="card screen hidden" id="screen-2">
+    <h2>De fire trin</h2>
+    <div class="steps"><div class="step">👀 Se</div><div class="step">🚶 Gå hen</div><div class="step">🤲 Hjælp</div><div class="step">💬 Fortæl</div></div>
+    <div class="actions"><button class="primary" onclick="nextScreen(3)">Videre</button></div>
+  </div>
+
+  <div class="card screen hidden" id="screen-3">
+    <h2>Dagens fokus</h2><p class="lead">Kig godt efter i dag.</p>
+    <p>Din vejleder viser dig de fire trin med et barn. Bagefter skal du selv kigge efter et barn.</p>
+    <div class="actions"><button class="primary" onclick="nextScreen(4)">Jeg er klar</button></div>
+  </div>
+
+  <div class="card screen hidden" id="screen-4">
+    <h2>Midtvejs</h2><p class="lead">Har du set et barn, der havde brug for hjælp?</p>
+    <div class="choice-grid">
+      <button class="choice" onclick="midChoice('Ja')">Ja</button>
+      <button class="choice" onclick="midChoice('Nej')">Nej</button>
+      <button class="choice" onclick="midChoice('Jeg ved det ikke')">Jeg ved det ikke</button>
+    </div>
+  </div>
+
+  <div class="card screen hidden" id="screen-5">
+    <h2 id="mid-title">Tak.</h2><p class="lead" id="mid-text">Husk det. Du skal fortælle om det i eftermiddag.</p>
+    <div class="actions"><button class="primary" onclick="nextScreen(6)">Færdig</button></div>
+  </div>
+
+  <div class="card screen hidden" id="screen-6">
+    <h2>Nu skal du fortælle om i dag.</h2><p class="lead">Tænk på ét barn, du så eller hjalp.</p>
+    <div class="actions"><button class="primary" onclick="startTell()">Start</button></div>
+  </div>
+
+  <div class="card screen hidden" id="screen-7">
+    <h2 id="tell-question">Hvad skete der?</h2><p id="tell-help">Fortæl med dine egne ord.</p>
+    <div class="actions">
+      <button class="primary" onclick="tellAnswer('Jeg har fortalt det')">Jeg har fortalt det</button>
+      <button class="neutral" onclick="tellAnswer('Jeg ved det ikke')">Jeg ved det ikke</button>
+    </div>
+  </div>
+
+  <div class="card screen hidden" id="screen-8">
+    <h2>Tak for i dag.</h2><p class="lead">Elevdelen er afsluttet.</p>
+    <div class="notice">Der er ikke lavet en vurdering af dig.</div>
+  </div>
+
+<footer class="footer"><strong>PAU-forløb · Version 1.2</strong><br>Første udgave · juli 2026 · Udviklet med AI-understøttelse og fagligt gennemgået.</footer>
+
+</section></main>
+<script src="elev-v12.js?v=12"></script>
+</body></html>
